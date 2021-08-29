@@ -21,8 +21,8 @@ def status_check(index: Index) -> Callable:
             errors = False
             all_status = index.get_all_update_status()
             if len(all_status) == initial_status_count + 1:
-                status = all_status.pop()
-                if status["status"] == "failed":
+                status = all_status[-1:]
+                if status[0]["status"] == "failed":
                     errors = True
             else:
                 status = all_status[initial_status_count:]
