@@ -3,6 +3,12 @@
 This package provides a decorator for the [MeiliSearch Python](https://github.com/meilisearch/meilisearch-python)
 client that will check for a failed status when adding documents.
 
+## Instillation
+
+```sh
+pip install meilisearch-status-check-decorator
+```
+
 ## Useage
 
 ### Add documents with no errors
