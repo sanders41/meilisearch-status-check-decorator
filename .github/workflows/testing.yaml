@@ -43,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9, '3.10.0-beta - 3.10.0']
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -58,6 +58,9 @@ jobs:
     - name: Install Dependencies
       run: |
         poetry install
+    - name: MeiliSearch (latest version) setup with Docker
+      run: |
+        docker run -d -p 7700:7700 getmeili/meilisearch:latest ./meilisearch --no-analytics=true --master-key=masterKey
     - name: Test with pytest
       run: |
         poetry run pytest
