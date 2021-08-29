@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "meilisearch-status-check-decorator"
-version = "0.1.0"
+version = "0.1.1"
 description = "A decorator to check for indexing status errors"
 authors = ["Paul Sanders <psanders1@gmail.com>"]
 license = "MIT"
