@@ -18,6 +18,7 @@ jobs:
         echo "${HOME}/.local/bin" >> $GITHUB_PATH
     - name: Install Dependencies
       run: |
+        pip install -U pip
         poetry install
     - name: Add pypi token to Poetry
       run: |
