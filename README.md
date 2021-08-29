@@ -49,7 +49,7 @@ from meilisearch_status_check_decorator import status_check
 index = Client("http://localhost:7700", "masterKey").index("test")
 
 
-@status_check(documents=documents, index=index)
+@status_check(index=index)
 def bad_insert():
     documents = [
       {
