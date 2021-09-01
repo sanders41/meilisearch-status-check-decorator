@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from functools import wraps
+from time import sleep
 from typing import Any, Callable
 
 from meilisearch.errors import MeiliSearchApiError
@@ -20,6 +21,16 @@ def status_check(index: Index) -> Callable:
 
             errors = False
             all_status = index.get_all_update_status()
+
+            while True:
+                if not [
+                    x["status"] for x in all_status if x["status"] not in ["processed", "failed"]
+                ]:
+                    break
+
+                sleep(1)
+                all_status = index.get_all_update_status()
+
             if len(all_status) == initial_status_count + 1:
                 status = all_status[-1:]
                 if status[0]["status"] == "failed":

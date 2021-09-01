@@ -45,8 +45,7 @@ def index():
 def test_status_check(docs, expected_fail, expected_indexed, index, capfd):
     @status_check(index=index)
     def fn():
-        response = index.add_documents(docs)
-        index.wait_for_pending_update(response["updateId"])
+        index.add_documents(docs)
 
     fn()
     stats = index.get_stats()
@@ -100,9 +99,7 @@ def test_status_check_batches(
 ):
     @status_check(index=index)
     def fn():
-        responses = index.add_documents_in_batches(docs, 1)
-        for response in responses:
-            index.wait_for_pending_update(response["updateId"])
+        index.add_documents_in_batches(docs, 1)
 
     fn()
     stats = index.get_stats()
