@@ -58,6 +58,10 @@ src_paths = ["meilisearch_status_check_decorator", "tests"]
 check_untyped_defs = true
 disallow_untyped_defs = true
 
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "--cov=meilisearch_status_check_decorator"
